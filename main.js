@@ -226,16 +226,25 @@ Await
 
 // readData();
 
-async function getData() {
-  console.log("Before Fetch");
-  try {
-    let myData = await fetch("https://api.github.com/users/BoubakerSaif/repos");
-    console.log(await myData.json());
-  } catch (error) {
-    console.log(`Reason : ${error}`);
-  } finally {
-    console.log("After Fetch");
-  }
-}
+// async function getData() {
+//   console.log("Before Fetch");
+//   try {
+//     let myData = await fetch("https://api.github.com/users/BoubakerSaif/repos");
+//     console.log(await myData.json());
+//   } catch (error) {
+//     console.log(`Reason : ${error}`);
+//   } finally {
+//     console.log("After Fetch");
+//   }
+// }
 
-getData();
+// getData();
+
+/// Synchronous // Asynchronous
+console.log("1");
+console.log("2");
+setTimeout(() => {
+  // Web Apis
+  console.log("Operation");
+}, 4000);
+console.log("3");
