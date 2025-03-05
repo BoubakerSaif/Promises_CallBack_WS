@@ -114,3 +114,128 @@
 //   .then((result) => {
 //     console.log(result[0].name);
 //   });
+
+// const myFirstPromise = new Promise((resF, rejF) => {
+//   setTimeout(() => {
+//     resF("Im the first Promise");
+//   }, 5000);
+// });
+// const mySecondPromise = new Promise((resF, rejF) => {
+//   setTimeout(() => {
+//     resF("Im the Second Promise");
+//   }, 1000);
+// });
+// const myThirdPromise = new Promise((resF, rejF) => {
+//   setTimeout(() => {
+//     resF("Im the Third Promise");
+//   }, 2000);
+// });
+
+// Promise.all([myFirstPromise, mySecondPromise, myThirdPromise]).then(
+//   (result) => {
+//     console.log(result);
+//   },
+//   (rejecResult) => {
+//     console.log(rejecResult);
+//   }
+// );
+// Promise.allSettled([myFirstPromise, mySecondPromise, myThirdPromise]).then(
+//   (result) => {
+//     console.log(result);
+//   },
+//   (rejecResult) => {
+//     console.log(rejecResult);
+//   }
+// );
+
+// Promise.race([myFirstPromise, mySecondPromise, myThirdPromise]).then(
+//   (result) => {
+//     console.log(result);
+//   },
+//   (rejecResult) => {
+//     console.log(rejecResult);
+//   }
+// );
+
+/*
+Async
+-Async before a function mean this function return a promise
+-Async and await help in creating a asynchronous promise with cleaner style
+
+*/
+
+// function getData() {
+//   return new Promise((resF, rejF) => {
+//     let users = ["a"];
+//     if (users.length > 0) {
+//       resF("Users Found");
+//     } else {
+//       resF("No users Found");
+//     }
+//   });
+// }
+
+// function getData() {
+//   let users = ["a"];
+//   if (users.length > 0) {
+//     return Promise.resolve("Users Found");
+//   } else {
+//     return Promise.reject("No users Found");
+//   }
+// }
+
+// async function getData() {
+//   let users = [];
+//   if (users.length > 0) {
+//     return "Users Found";
+//   } else {
+//     throw new Error("No users Found");
+//   }
+// }
+
+// getData().then(
+//   (resolvedValue) => {
+//     console.log(resolvedValue);
+//   },
+//   (rejectedValue) => {
+//     console.log(rejectedValue);
+//   }
+// );
+
+/*
+Await
+-Await works only inside Async Function
+-Await make javcascript wait for the promise result
+*/
+
+// const myPromise = new Promise((resF, rejF) => {
+//   setTimeout(() => {
+//     // resF("Im a good Promise");
+//     rejF(Error("Im a a bad promise"));
+//   }, 3000);
+// });
+
+// async function readData() {
+//   console.log("Before Promise");
+//   //   myPromise.then((result) => {
+//   //     console.log(result);
+//   //   });
+//   console.log(await myPromise.catch((err) => err));
+//   console.log("After Promise");
+// }
+
+// readData();
+
+async function getData() {
+  console.log("Before Fetch");
+  try {
+    let myData = await fetch("https://api.github.com/users/BoubakerSaif/repos");
+    console.log(await myData.json());
+  } catch (error) {
+    console.log(`Reason : ${error}`);
+  } finally {
+    console.log("After Fetch");
+  }
+}
+
+getData();
